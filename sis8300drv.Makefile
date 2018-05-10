@@ -29,6 +29,10 @@
 
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 
+EXCLUDE_ARCHS += linux-ppc64e6500 
+
+
+
 APP:=src/main/c
 APPSRC:=$(APP)/lib
 APPINC:=$(APP)/include
