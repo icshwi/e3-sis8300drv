@@ -19,6 +19,7 @@ endif
 
 -include $(TOP)/configure/CONFIG_OPTIONS
 
+
 ## It is not necessary to modify the following files in most case.
 ## Order is matter
 
