@@ -49,7 +49,7 @@ HEADERS += $(APPLIB)/sis8300drv_ad9510.h
 
 HEADERS += $(wildcard $(APPINC)/*.h)
 
-#USR_LIBS += udev
+USR_LIBS += udev
 
 # TEMP_PATH :=$(where_am_I)O.$(EPICSVERSION)_$(T_A)
 
