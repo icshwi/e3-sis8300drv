@@ -4,6 +4,55 @@ e3-sis8300drv
 ESS Site-specific EPICS module : sis8300drv
 
 
+## Build and install Vendor Library as e3 module
+
+```
+$ make init
+$ make build
+$ make install
+```
+
+## Vendor Applications
+
+The e3 doesn't provide any card specific vendor applications within its structure, however, it allows users to install them. The following vendor applications can be installed in ```E3_MODULES_INSTALL_LOCATION_BIN``` with the suffix ```E3_MODULE_VERSION```
+
+```
+sis8300drv_acq
+sis8300drv_i2c_rtm
+sis8300drv_irq
+sis8300drv_mmap
+sis8300drv_perf
+sis8300drv_rem
+sis8300drv_flashfw
+sis8300drv_i2c_temp
+sis8300drv_mem
+sis8300drv_out
+sis8300drv_reg
+sis8300drv_speed
+```
+
+One should execute ```make tools``` between ```make build``` and ```make install``` such as
+```
+$ make int
+$ make build
+$ make tools 
+$ make install
+```
+
+However, e3 doesn't provide more than this. One should set the executable path manually. For example,
+
+```
+$ make tools_env
+export PATH=/epics/base-3.15.5/require/3.0.0/siteLibs/sis8300drv_4.2.0_bin/linux-x86_64:${PATH}
+
+$ export PATH=/epics/base-3.15.5/require/3.0.0/siteLibs/sis8300drv_4.2.0_bin/linux-x86_64:${PATH}
+
+$  sis8300drv_flashfw_4.2.0
+Device and firmware image argument required.
+
+```
+
+
 ## Kernel module (sis8300drv.ko) can be installed via DKMS
 
 

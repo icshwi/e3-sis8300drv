@@ -1,31 +1,34 @@
-# One should define the any dependency modules and EPICS base path
-# in the following directory
 
-.PHONY: epics epics-clean
 
-E3_VENDOR_SRC_PATH:=$(E3_MODULE_SRC_PATH)/src/main/c
-E3_TOOLS_SRC_PATH:=$(E3_VENDOR_SRC_PATH)/tools
+E3_TOOLS_SRC_PATH:=$(E3_KMOD_SRC_PATH)/..
+
+
 TOOLS_MAKEFILE:=tools.Makefile
 
-tools: tools-conf
-	$(SUDOBASH) "$(MAKE) -C $(E3_TOOLS_SRC_PATH) -f $(TOOLS_MAKEFILE)"
+TOOLS_BIN_PATH:=$(E3_MODULES_INSTALL_LOCATION_BIN_LINK)/$(EPICS_HOST_ARCH)
 
-tools-conf:
+tools: tools_conf
+	$(SUDOBASH) "$(MAKE) -C $(E3_TOOLS_SRC_PATH) -f $(TOOLS_MAKEFILE) build"
+
+
+tools_conf:
 	@echo ""
 	install -m 644 $(TOP)/$(TOOLS_MAKEFILE)  $(E3_TOOLS_SRC_PATH)/
 	@echo ""
+
+
+tools_clean: tools_conf
+	$(SUDOBASH) "$(MAKE) -C $(E3_TOOLS_SRC_PATH) -f $(TOOLS_MAKEFILE) clean"
+
+
+# tools_install: tools_conf
+# 	$(SUDOBASH) "$(MAKE) -C $(E3_TOOLS_SRC_PATH) -f $(TOOLS_MAKEFILE) install"
 	
-tools-clean: tools-conf
-	$(SUDOBASH) "$(MAKE) -C $(E3_TOOLS_SRC_PATH)  -f $(TOOLS_MAKEFILE) clean"
+
+tools_env:
+	$(info -------- In most case, you can run the following export in a terminal --------)
+	$(info export PATH=$(TOOLS_BIN_PATH):$${PATH})
+	$(info ------------------------------------------------------------------------------)
 
 
-vendor:
-	$(SUDOBASH) "$(MAKE) -C $(E3_VENDOR_SRC_PATH)"
-	
-vendor-clean:
-	$(SUDOBASH) "$(MAKE) -C $(E3_VENDOR_SRC_PATH) clean"
-
-
-
-
-.PHONY: tools-conf tools vendor vendor-clean
+.PHONY: tools_conf tools tools_clean

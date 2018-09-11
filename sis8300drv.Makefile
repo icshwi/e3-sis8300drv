@@ -131,12 +131,12 @@ HEADERS += $(APPLIB)/sis8300drv_rtm.h
 HEADERS += $(APPLIB)/sis8300drv_flash.h
 HEADERS += $(APPLIB)/sis8300drv_ad9510.h
 
-HEADERS += $(wildcard $(APPINC)/*.h)
+BINS += $(wildcard $(APP)/sis8300drv_*_$(LIBVERSION))
 
 USR_LIBS += udev
 
 
-
+BINS += $(wildcard $(IOCADMINDB)/*.substitutions)
 
 ## This RULE should be used in case of inflating DB files 
 ## db rule is the default in RULES_DB, so add the empty one
