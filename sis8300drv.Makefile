@@ -49,7 +49,7 @@ ipmiComm_VERSION=
 sequencer_VERSION=
 sscan_VERSION=
 
-#std_VERSION=
+std_VERSION=
 ip_VERSION=
 calc_VERSION=
 pcre_VERSION=
@@ -88,7 +88,6 @@ ifcfastint_VERSION=
 
 nds_VERSION=
 loki_VERSION=
-nds_VERSION=
 #sis8300drv_VERSION=
 sis8300_VERSION=
 sis8300llrfdrv_VERSION=
@@ -111,12 +110,13 @@ adsis8300bpm_VERSION=
 adsis8300fc_VERSION=
 
 
-
-
 APP:=src/main/c
 APPLIB:=$(APP)/lib
 APPINC:=$(APP)/include
 APPTOOL:=$(APP)/tools
+
+
+USR_INCLUDES += -I$(where_am_I)$(APPINC)
 
 
 SOURCES += $(APPLIB)/sis8300drv.c
@@ -130,6 +130,11 @@ HEADERS += $(APPLIB)/sis8300drv_utils.h
 HEADERS += $(APPLIB)/sis8300drv_rtm.h
 HEADERS += $(APPLIB)/sis8300drv_flash.h
 HEADERS += $(APPLIB)/sis8300drv_ad9510.h
+
+HEADERS += $(APPINC)/sis8300_defs.h
+HEADERS += $(APPINC)/sis8300drv.h
+HEADERS += $(APPINC)/sis8300_reg.h
+
 
 BINS += $(wildcard $(APP)/sis8300drv_*_$(LIBVERSION))
 
