@@ -38,8 +38,6 @@ EXCLUDE_ARCHS += linux-ppc64e6500
 # driver.makefile recursively read all include directories which were installed.
 # The only way to exclude header files is....
 
-
-
 iocStats_VERSION=
 autosave_VERSION=
 asyn_VERSION=
