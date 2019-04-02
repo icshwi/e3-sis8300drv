@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2018 - Present  European Spallation Source ERIC
+#  Copyright (c) 2018 - 2019  European Spallation Source ERIC
 #
 #  The program is free software: you can redistribute
 #  it and/or modify it under the terms of the GNU General Public License
@@ -19,8 +19,8 @@
 #           Jeong Han Lee
 # email   : joaopaulomartins@esss.se
 #           jeonghan.lee@gmail.com
-# Date    : Tuesday, September 11 13:47:34 CEST 2018
-# version : 0.0.1
+# Date    : Tuesday, April  2 16:55:50 CEST 2019
+# version : 0.0.2
 #
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
