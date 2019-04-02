@@ -23,15 +23,9 @@
 # version : 0.0.1
 #
 
-
-
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
-
-EXCLUDE_ARCHS += linux-ppc64e6500 
-
-
 
 APP:=src/main/c
 APPLIB:=$(APP)/lib
@@ -63,8 +57,7 @@ BINS += $(wildcard $(APP)/sis8300drv_*_$(LIBVERSION))
 
 USR_LIBS += udev
 
-
-BINS += $(wildcard $(IOCADMINDB)/*.substitutions)
+# BINS += $(wildcard $(IOCADMINDB)/*.substitutions)
 
 ## This RULE should be used in case of inflating DB files 
 ## db rule is the default in RULES_DB, so add the empty one
