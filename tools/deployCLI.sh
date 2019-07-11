@@ -4,14 +4,13 @@ if [ "$UID" -ne 0 ] ; then
 	exit
 fi
 
-if [[ $# -ne 2 ]]; then
-	echo "Usage: deployCLI.sh <EPICS_SRC> <SITELIBS PATH>"
-	echo "e.g deployCLI.sh $EPICS_SRC $E3_SITELIBS_PATH"
+if [[ $# -ne 1 ]]; then
+	echo "Usage: deployCLI.sh <EPICS_SRC>"
+	echo "e.g deployCLI.sh $EPICS_SRC"
 	exit
 fi
 
 EPICS_SRC=$1
-E3_SITELIBS_PATH=$2
 installPath=/usr/bin
 configPath=$EPICS_SRC/e3-sis8300drv/configure
 sourcePath=$EPICS_SRC/e3-sis8300drv/m-kmod-sis8300/src/main/c
@@ -46,16 +45,3 @@ do
 	    eval "ln -s $sourcePath/$i $installPath/$tool_name"
     fi
 done
-
-# Make available library in LD_LIBRARY_PATH
-a=$(grep -e "$E3_SITELIBS_PATH" /home/iocuser/.bashrc)
-echo "len a = ${#a}"
-if [ ${#a} -lt ${#E3_SITELIBS_PATH} ]; then
-    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$E3_SITELIBS_PATH/sis8300drv_$tools_version/linux_x86_64" >> ~/.bashrc
-    source ~/.bashrc
-else
-    echo "LD_LIBRARY_PATH already includes E3_SITELIBS_PATH"
-    echo "$a"
-fi
-
-
