@@ -18,6 +18,15 @@ sourcePath=$EPICS_SRC/e3-sis8300drv/m-kmod-sis8300/src/main/c
 tools_version=$(grep -e E3_MODULE_VERSION "$configPath/CONFIG_MODULE")
 tools_version=${tools_version#'E3_MODULE_VERSION:='}
 
+# Check locally built tools are available
+temp=$(find $sourcePath -name "sis8300drv_reg_$tools_version")
+if [ ${#temp} -eq 0 ]; then
+    echo "Locally built tools not found for version $tools_version, exiting.."
+    echo "Before running this deployment script again, build tools locally with the following:"
+    echo "$ make tools"
+    exit
+fi
+
 # Deploy tools from local build directory to installation path
 
 #Remove any existing configuration
