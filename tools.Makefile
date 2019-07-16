@@ -42,7 +42,7 @@ DRV_SOURCES = sis8300drv.c \
 DRV_OBJECTS := $(addsuffix .o,$(basename $(DRV_SOURCES)))
 
 CFLAGS := -O3 -D_GNU_SOURCE -Wall
-LDFLAGS := -Wall -lpthread -lrt -lm -ludev
+LDFLAGS := -Wall -lpthread -lrt -lm
 
 build: $(BINS)
 	@echo $(BINS_SRCS)
