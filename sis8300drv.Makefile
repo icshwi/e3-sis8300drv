@@ -55,8 +55,6 @@ HEADERS += $(APPINC)/sis8300_reg.h
 
 BINS += $(wildcard $(APP)/sis8300drv_*_$(LIBVERSION))
 
-USR_LIBS += udev
-
 # BINS += $(wildcard $(IOCADMINDB)/*.substitutions)
 
 ## This RULE should be used in case of inflating DB files 
