@@ -20,14 +20,15 @@ SUBDIRS :=         \
 	register       \
 	remove         \
 	speed          \
-	i2c_temp
+	i2c_temp	   \
+	fwver
 
 FILES := $(foreach d, $(SUBDIRS),$(wildcard tools/$(d)/*))
 BINS_SRCS := $(notdir $(filter %.c,$(FILES)))
 BINS := $(addsuffix _$(E3_MODULE_VERSION), $(BINS_SRCS:.c=))
 BINS_OBJS :=$(BINS_SRCS:.c=.o)
 
-VPATH = lib tools/acquisition tools/flash tools/i2c_rtm tools/i2c_temp tools/irq tools/memory tools/mmap tools/output tools/performance tools/register tools/remove tools/speed
+VPATH = lib tools/acquisition tools/flash tools/i2c_rtm tools/i2c_temp tools/irq tools/memory tools/mmap tools/output tools/performance tools/register tools/remove tools/speed tools/fwver
 
 CPPFLAGS += -I $(APPINC)
 CPPFLAGS += -I $(APPLIB)
@@ -81,6 +82,9 @@ sis8300drv_rem_$(E3_MODULE_VERSION): sis8300drv_rem.o $(DRV_OBJECTS)
 	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
 sis8300drv_speed_$(E3_MODULE_VERSION): sis8300drv_speed.o $(DRV_OBJECTS)
+	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+sis8300drv_fwver_$(E3_MODULE_VERSION): sis8300drv_fwver.o $(DRV_OBJECTS)
 	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
 .c.o:
