@@ -54,7 +54,11 @@ Device and firmware image argument required.
 
 
 ## Kernel module (sis8300drv.ko) can be installed via DKMS
-
+Note that the following dependencies must be satisfied:  
+EPICS Base installed to allow installation of E3 require.  
+E3 Require installed to provide Make rules for kernel module installation.  
+Kernel source must be available in /lib/modules directory.  
+This can be obtained on centOS by installation of kernel-devel from system package manager.  
 
 ```sh
 $ make init
