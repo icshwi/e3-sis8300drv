@@ -1,6 +1,6 @@
 # Deprecation notice
 
-2020-08-21: This remote has been deprecated. Moved to https://gitlab.esss.lu.se/e3/llrf/e3-sis8300drv
+2020-08-21: This remote has been deprecated. Moved to https://gitlab.esss.lu.se/e3/rf/e3-sis8300drv
 
 e3-sis8300drv  
 ======
